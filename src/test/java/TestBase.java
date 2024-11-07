@@ -1,3 +1,4 @@
+import Repo.Components;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class TestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl;
+    protected Components components;
 
     @Before
     public void setUp() {
@@ -29,6 +31,7 @@ public class TestBase {
         // Set up the WebDriver
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        components = new Components(driver);
         driver.get(baseUrl);
     }
 

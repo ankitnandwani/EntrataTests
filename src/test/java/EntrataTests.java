@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -9,15 +8,18 @@ import java.util.List;
 public class EntrataTests extends TestBase{
 
     @Test
-    public void testHomePageTitle() {
+    public void testCookiesPopup() {
         // Test to verify the title of the home page
         String title = driver.getTitle();
         Assert.assertTrue("Home page title does not contain 'Entrata'", title.contains("Entrata"));
+        Assert.assertTrue("Popup not found", components.verifyCookiePopupIsVisible());
+        components.declineCookies();
+        Assert.assertFalse("Popup found", components.verifyCookiePopupIsVisible());
     }
 
     @Test
-    public void testNavigationToFeatures() {
-        // Test to navigate to the Features page and verify the URL
+    public void testNavigationToScheduleYourDemoPage() {
+        // Test to navigate to the Schedule Your Demo page
         WebElement featuresLink = driver.findElement(By.linkText("Features"));
         featuresLink.click();
         Assert.assertTrue("Did not navigate to the Features page", driver.getCurrentUrl().contains("features"));
