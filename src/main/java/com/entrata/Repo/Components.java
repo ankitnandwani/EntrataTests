@@ -1,4 +1,4 @@
-package Repo;
+package com.entrata.Repo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -19,10 +19,9 @@ public class EntrataTests extends TestBase{
 
     @Test
     public void testNavigationToScheduleYourDemoPage() {
-        // Test to navigate to the Schedule Your Demo page
-        WebElement featuresLink = driver.findElement(By.linkText("Features"));
-        featuresLink.click();
-        Assert.assertTrue("Did not navigate to the Features page", driver.getCurrentUrl().contains("features"));
+        // Test the navigation and form on Schedule Your Demo page
+        homePage.navigateToScheduleDemoPage();
+        Assert.assertTrue(scheduleDemoPage.isHeaderTitleDisplayed());
     }
 
     @Test
