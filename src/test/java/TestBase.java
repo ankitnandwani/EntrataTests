@@ -50,6 +50,7 @@ public class TestBase {
         allResourcesPage = new AllResourcesPage(driver);
         footerComponent = new FooterComponent(driver);
 
+        driver.manage().window().maximize();
         driver.get(ConfigFactory.getConfig().url());
     }
 
