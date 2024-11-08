@@ -1,6 +1,6 @@
 package com.entrata.Repo;
 
-import com.entrata.driver.DriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,16 +8,19 @@ import com.entrata.Utils;
 
 public class HomePage {
 
-    public HomePage(){
-        PageFactory.initElements(DriverManager.getDriver(), this);
+    WebDriver driver;
+
+    public HomePage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+        this.driver=driver;
     }
 
     @FindBy(xpath = "//div[normalize-space()='Schedule Your Demo']")
     private WebElement scheduleDemoBtn;
 
     public void navigateToScheduleDemoPage(){
-        Utils.click(scheduleDemoBtn);
-        Utils.switchToNewTab();
+        Utils.click(driver, scheduleDemoBtn);
+        Utils.switchToNewTab(driver);
     }
 
 
