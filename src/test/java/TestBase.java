@@ -57,7 +57,7 @@ public class TestBase {
     public void tearDown() {
         // Close the browser
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 }

@@ -72,6 +72,7 @@ public class HeaderComponent {
     public void navigateToAllSolutionPage(){
         Utils.click(driver, solutionsLink);
         Utils.click(driver, solutionsLink);
+        Utils.click(driver, solutionsLink);
         Utils.click(driver, allSolutionsLink);
     }
 
