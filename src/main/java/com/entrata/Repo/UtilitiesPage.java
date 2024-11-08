@@ -1,29 +1,26 @@
 package com.entrata.Repo;
 
 import com.entrata.Utils;
-import org.openqa.selenium.WebDriver;
+import com.entrata.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UtilitiesPage {
 
-    WebDriver driver;
-
-    public UtilitiesPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    public UtilitiesPage(){
+        PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
     @FindBy(id = "product-banner-h1")
     private WebElement pageHeader;
 
     public Boolean isHeaderTitleDisplayed() {
-        return Utils.isDisplayed(driver, pageHeader);
+        return Utils.isDisplayed(pageHeader);
     }
 
     public String getHeader() {
-        return Utils.getText(driver, pageHeader);
+        return Utils.getText(pageHeader);
     }
 
 }

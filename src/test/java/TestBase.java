@@ -9,19 +9,15 @@ import com.entrata.Repo.MarketingAndLeasingPage;
 import com.entrata.Repo.PropertyManagementPage;
 import com.entrata.Repo.ScheduleDemoPage;
 import com.entrata.Repo.UtilitiesPage;
-import com.entrata.config.ConfigFactory;
+import com.entrata.driver.Driver;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class TestBase {
     protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected String baseUrl;
     protected Components components;
     protected HomePage homePage;
     protected ScheduleDemoPage scheduleDemoPage;
@@ -37,30 +33,25 @@ public class TestBase {
     @Before
     public void setUp() {
         // Set up the WebDriver
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Driver.initDriver();
 
         //Setup Pages
-        components = new Components(driver);
-        homePage = new HomePage(driver);
-        scheduleDemoPage = new ScheduleDemoPage(driver);
-        headerComponent = new HeaderComponent(driver);
-        propertyManagementPage = new PropertyManagementPage(driver);
-        marketingAndLeasingPage = new MarketingAndLeasingPage(driver);
-        accountingPage = new AccountingPage(driver);
-        utilitiesPage = new UtilitiesPage(driver);
-        allSolutionsPage = new AllSolutionsPage(driver);
-        allResourcesPage = new AllResourcesPage(driver);
-        footerComponent = new FooterComponent(driver);
-
-        driver.get(ConfigFactory.getConfig().url());
+        components = new Components();
+        homePage = new HomePage();
+        scheduleDemoPage = new ScheduleDemoPage();
+        headerComponent = new HeaderComponent();
+        propertyManagementPage = new PropertyManagementPage();
+        marketingAndLeasingPage = new MarketingAndLeasingPage();
+        accountingPage = new AccountingPage();
+        utilitiesPage = new UtilitiesPage();
+        allSolutionsPage = new AllSolutionsPage();
+        allResourcesPage = new AllResourcesPage();
+        footerComponent = new FooterComponent();
     }
 
     @After
     public void tearDown() {
         // Close the browser
-        if (driver != null) {
-            driver.quit();
-        }
+        Driver.quitDriver();
     }
 }

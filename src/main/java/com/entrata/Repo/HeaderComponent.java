@@ -1,7 +1,7 @@
 package com.entrata.Repo;
 
 import com.entrata.Utils;
-import org.openqa.selenium.WebDriver;
+import com.entrata.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HeaderComponent {
 
-    WebDriver driver;
-    public HeaderComponent(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver=driver;
+    public HeaderComponent(){
+        PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
     @FindAll({
@@ -47,39 +45,39 @@ public class HeaderComponent {
     private WebElement allResourcesLink;
 
     public void navigateToPropertyManagementPage(){
-        Utils.click(driver, productsLink);
-        Utils.click(driver, propertyManagementLink);
+        Utils.click(productsLink);
+        Utils.click(propertyManagementLink);
     }
 
     public void navigateToMarketingAndLeasingPage(){
-        Utils.click(driver, productsLink);
-        Utils.click(driver, productsLink);
-        Utils.click(driver, marketingAndLeasingLink);
+        Utils.click(productsLink);
+        Utils.click(productsLink);
+        Utils.click(marketingAndLeasingLink);
     }
 
     public void navigateToAccountingPage(){
-        Utils.click(driver, productsLink);
-        Utils.click(driver, productsLink);
-        Utils.click(driver, accountingLink);
+        Utils.click(productsLink);
+        Utils.click(productsLink);
+        Utils.click(accountingLink);
     }
 
     public void navigateToUtilitiesPage(){
-        Utils.click(driver, productsLink);
-        Utils.click(driver, productsLink);
-        Utils.click(driver, utilitiesLink);
+        Utils.click(productsLink);
+        Utils.click(productsLink);
+        Utils.click(utilitiesLink);
     }
 
     public void navigateToAllSolutionPage(){
-        Utils.click(driver, solutionsLink);
-        Utils.click(driver, solutionsLink);
-        Utils.click(driver, solutionsLink);
-        Utils.click(driver, allSolutionsLink);
+        Utils.click(solutionsLink);
+        Utils.click(solutionsLink);
+        Utils.click(solutionsLink);
+        Utils.click(allSolutionsLink);
     }
 
     public void navigateToAllResourcesPage(){
-        Utils.click(driver, resourcesLink);
-        Utils.click(driver, resourcesLink);
-        Utils.click(driver, resourcesLink);
-        Utils.click(driver, allResourcesLink);
+        Utils.click(resourcesLink);
+        Utils.click(resourcesLink);
+        Utils.click(resourcesLink);
+        Utils.click(allResourcesLink);
     }
 }

@@ -1,17 +1,15 @@
 package com.entrata.Repo;
 
 import com.entrata.Utils;
-import org.openqa.selenium.WebDriver;
+import com.entrata.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Components {
 
-    WebDriver driver;
-    public Components(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver=driver;
+    public Components(){
+        PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
     @FindBy(id = "cookie-decline")
@@ -24,12 +22,12 @@ public class Components {
     private WebElement bannerPopup;
 
     public void declineCookies(){
-        Utils.click(driver, denyBtn);
+        Utils.click(denyBtn);
     }
 
     public void closeAllPopups(){
-        Utils.click(driver, denyBtn);
-        Utils.click(driver, bannerPopup);
+        Utils.click(denyBtn);
+        Utils.click(bannerPopup);
     }
 
     public boolean verifyCookiePopupIsVisible(){

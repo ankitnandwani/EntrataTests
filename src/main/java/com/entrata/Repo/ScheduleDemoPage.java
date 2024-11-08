@@ -1,19 +1,16 @@
 package com.entrata.Repo;
 
 import com.entrata.Utils;
+import com.entrata.driver.DriverManager;
 import com.github.javafaker.Faker;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ScheduleDemoPage {
 
-    WebDriver driver;
-
-    public ScheduleDemoPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver=driver;
+    public ScheduleDemoPage(){
+        PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
     @FindBy(xpath = "//h1[normalize-space()='Property Management the Way It Should Be']")
@@ -47,21 +44,21 @@ public class ScheduleDemoPage {
     private WebElement scheduleDemoBtn;
 
     public Boolean isHeaderTitleDisplayed() {
-        return Utils.isDisplayed(driver, header);
+        return Utils.isDisplayed(header);
     }
 
     public void fillAllDetails(){
-        Utils.sendKeys(driver, firstNameInput, new Faker().name().firstName());
-        Utils.sendKeys(driver, lastNameInput, new Faker().name().lastName());
-        Utils.sendKeys(driver, emailInput, new Faker().internet().emailAddress());
-        Utils.sendKeys(driver, companyInput, new Faker().company().name());
-        Utils.sendKeys(driver, phoneInput, new Faker().phoneNumber().cellPhone());
-        Utils.selectByVisibleText(driver, unitDropdown, "1 - 10");
-        Utils.sendKeys(driver, jobTitleInput, new Faker().job().title());
-        Utils.selectByVisibleText(driver, demoRequestDropdown, "a Resident");
+        Utils.sendKeys(firstNameInput, new Faker().name().firstName());
+        Utils.sendKeys(lastNameInput, new Faker().name().lastName());
+        Utils.sendKeys(emailInput, new Faker().internet().emailAddress());
+        Utils.sendKeys(companyInput, new Faker().company().name());
+        Utils.sendKeys(phoneInput, new Faker().phoneNumber().cellPhone());
+        Utils.selectByVisibleText(unitDropdown, "1 - 10");
+        Utils.sendKeys(jobTitleInput, new Faker().job().title());
+        Utils.selectByVisibleText(demoRequestDropdown, "a Resident");
     }
 
     public Boolean isScheduleDemoBtnDisplayed() {
-        return Utils.isDisplayed(driver, scheduleDemoBtn);
+        return Utils.isDisplayed(scheduleDemoBtn);
     }
 }
