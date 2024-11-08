@@ -1,6 +1,14 @@
+import com.entrata.Repo.AccountingPage;
+import com.entrata.Repo.AllResourcesPage;
+import com.entrata.Repo.AllSolutionsPage;
 import com.entrata.Repo.Components;
+import com.entrata.Repo.FooterComponent;
+import com.entrata.Repo.HeaderComponent;
 import com.entrata.Repo.HomePage;
+import com.entrata.Repo.MarketingAndLeasingPage;
+import com.entrata.Repo.PropertyManagementPage;
 import com.entrata.Repo.ScheduleDemoPage;
+import com.entrata.Repo.UtilitiesPage;
 import com.entrata.config.ConfigFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -17,6 +25,14 @@ public class TestBase {
     protected Components components;
     protected HomePage homePage;
     protected ScheduleDemoPage scheduleDemoPage;
+    protected HeaderComponent headerComponent;
+    protected PropertyManagementPage propertyManagementPage;
+    protected MarketingAndLeasingPage marketingAndLeasingPage;
+    protected AccountingPage accountingPage;
+    protected UtilitiesPage utilitiesPage;
+    protected AllSolutionsPage allSolutionsPage;
+    protected AllResourcesPage allResourcesPage;
+    protected FooterComponent footerComponent;
 
     @Before
     public void setUp() {
@@ -26,6 +42,14 @@ public class TestBase {
         components = new Components(driver);
         homePage = new HomePage(driver);
         scheduleDemoPage = new ScheduleDemoPage(driver);
+        headerComponent = new HeaderComponent(driver);
+        propertyManagementPage = new PropertyManagementPage(driver);
+        marketingAndLeasingPage = new MarketingAndLeasingPage(driver);
+        accountingPage = new AccountingPage(driver);
+        utilitiesPage = new UtilitiesPage(driver);
+        allSolutionsPage = new AllSolutionsPage(driver);
+        allResourcesPage = new AllResourcesPage(driver);
+        footerComponent = new FooterComponent(driver);
         driver.get(ConfigFactory.getConfig().url());
     }
 
@@ -33,7 +57,7 @@ public class TestBase {
     public void tearDown() {
         // Close the browser
         if (driver != null) {
-            driver.quit();
+            //driver.quit();
         }
     }
 }

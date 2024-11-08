@@ -2,7 +2,7 @@ package com.entrata.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources(value="file:${user.dir}/src/test/resources/com.entrata.config.properties")
+@Config.Sources(value="file:${user.dir}/src/test/resources/config.properties")
 public interface FrameworkConfig extends Config {
 
     long timeout() ;

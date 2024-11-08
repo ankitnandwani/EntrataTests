@@ -9,7 +9,7 @@ public class EntrataTests extends TestBase{
 
     @Test
     public void testCookiesPopup() {
-        // Test to verify the title of the home page
+        // Test to verify the title and cookie popup
         String title = driver.getTitle();
         Assert.assertTrue("Home page title does not contain 'Entrata'", title.contains("Entrata"));
         Assert.assertTrue("Popup not found", components.verifyCookiePopupIsVisible());
@@ -20,30 +20,47 @@ public class EntrataTests extends TestBase{
     @Test
     public void testNavigationToScheduleYourDemoPage() {
         // Test the navigation and form on Schedule Your Demo page
+        components.declineCookies();
         homePage.navigateToScheduleDemoPage();
         Assert.assertTrue(scheduleDemoPage.isHeaderTitleDisplayed());
+        scheduleDemoPage.fillAllDetails();
+        Assert.assertTrue(scheduleDemoPage.isScheduleDemoBtnDisplayed());
     }
 
     @Test
-    public void testInteractWithSearchBar() {
-        // Test to interact with the search bar without submitting
-        WebElement searchBar = driver.findElement(By.name("search"));
-        searchBar.sendKeys("Property Management");
-        Assert.assertEquals("Search bar value does not match", "Property Management", searchBar.getAttribute("value"));
-    }
+    public void testHeaderLinksRedirection() {
+        // Test to verify header links are navigating correctly
+        components.closeAllPopups();
+        headerComponent.navigateToPropertyManagementPage();
+        Assert.assertTrue(propertyManagementPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("Property Management", propertyManagementPage.getHeader());
 
-    @Test
-    public void testDynamicContentVerification() {
-        // Test to verify dynamic content on the home page
-        // Wait for dynamic content to load
-        WebElement dynamicElement = driver.findElement(By.className("dynamic-class"));
-        Assert.assertTrue("Dynamic content is not displayed", dynamicElement.isDisplayed());
+        headerComponent.navigateToMarketingAndLeasingPage();
+        Assert.assertTrue(marketingAndLeasingPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("Marketing & Leasing", marketingAndLeasingPage.getHeader());
+
+        headerComponent.navigateToAccountingPage();
+        Assert.assertTrue(accountingPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("Entrata® Accounting™", accountingPage.getHeader());
+
+        headerComponent.navigateToUtilitiesPage();
+        Assert.assertTrue(utilitiesPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("Utilities", utilitiesPage.getHeader());
+
+        headerComponent.navigateToAllSolutionPage();
+        Assert.assertTrue(allSolutionsPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("All Solutions", allSolutionsPage.getHeader());
+
+        headerComponent.navigateToAllResourcesPage();
+        Assert.assertTrue(allResourcesPage.isHeaderTitleDisplayed());
+        Assert.assertEquals("Resource Center", allResourcesPage.getHeader());
+
     }
 
     @Test
     public void testFooterLinks() {
         // Test to verify footer links are present
-        List<WebElement> footerLinks = driver.findElements(By.cssSelector("footer a"));
+        List<WebElement> footerLinks = footerComponent.getFooterLinks();
         Assert.assertFalse("No footer links found", footerLinks.isEmpty());
         for (WebElement link : footerLinks) {
             Assert.assertTrue("Footer link " + link.getText() + " is not displayed", link.isDisplayed());
