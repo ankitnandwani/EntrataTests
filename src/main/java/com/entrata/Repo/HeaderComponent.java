@@ -3,6 +3,7 @@ package com.entrata.Repo;
 import com.entrata.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,10 +15,14 @@ public class HeaderComponent {
         this.driver=driver;
     }
 
-    @FindBy(xpath = "//div[normalize-space()='Products']")
+    @FindAll({
+            @FindBy(xpath = "(//div[normalize-space()='Products'])[5]"),
+            @FindBy(xpath = "(//div[normalize-space()='Products'])[2]")
+    }
+    )
     private WebElement productsLink;
 
-    @FindBy(xpath = "(//h3[normalize-space()='Property Management'])[2]")
+    @FindBy(xpath = "(//h3[normalize-space()='Property Management'])[7]")
     private WebElement propertyManagementLink;
 
     @FindBy(xpath = "(//h3[normalize-space()='Marketing & Leasing'])[2]")
