@@ -57,12 +57,4 @@ public class Utils {
         waitUntilElementVisible(driver, element);
         return element.getText();
     }
-
-    public static void genericWait(){
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
