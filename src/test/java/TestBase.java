@@ -39,6 +39,8 @@ public class TestBase {
         // Set up the WebDriver
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        //Setup Pages
         components = new Components(driver);
         homePage = new HomePage(driver);
         scheduleDemoPage = new ScheduleDemoPage(driver);
@@ -50,6 +52,7 @@ public class TestBase {
         allSolutionsPage = new AllSolutionsPage(driver);
         allResourcesPage = new AllResourcesPage(driver);
         footerComponent = new FooterComponent(driver);
+
         driver.get(ConfigFactory.getConfig().url());
     }
 
