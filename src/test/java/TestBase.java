@@ -14,6 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 public class TestBase {
     protected WebDriver driver;
     protected Components components;
