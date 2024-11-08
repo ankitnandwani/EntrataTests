@@ -20,8 +20,6 @@ import java.time.Duration;
 
 public class TestBase {
     protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected String baseUrl;
     protected Components components;
     protected HomePage homePage;
     protected ScheduleDemoPage scheduleDemoPage;
@@ -38,7 +36,6 @@ public class TestBase {
     public void setUp() {
         // Set up the WebDriver
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Setup Pages
         components = new Components(driver);
