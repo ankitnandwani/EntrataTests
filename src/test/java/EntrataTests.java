@@ -53,7 +53,6 @@ public class EntrataTests extends TestBase{
         headerComponent.navigateToAllResourcesPage();
         Assert.assertTrue(allResourcesPage.isHeaderTitleDisplayed());
         Assert.assertEquals("Resource Center", allResourcesPage.getHeader());
-
     }
 
     @Test
